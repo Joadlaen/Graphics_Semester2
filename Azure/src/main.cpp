@@ -410,7 +410,7 @@ int main()
         //glEnable(GL_POLYGON_OFFSET_FILL);
         //glPolygonOffset(0.5f,0.5f);
 
-        scene->setShaderId(depthShader);
+        scene->setShaderId(texblinnShader);
         scene->draw(matModelRoot, matLightView, matLightProj);
         
         glCullFace(GL_BACK);

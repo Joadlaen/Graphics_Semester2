@@ -61,7 +61,6 @@ protected:
     Material material;
     
     std::vector<GLuint> buffers;
-
     // this will be Material in the future
     GLuint shaderId;
 
