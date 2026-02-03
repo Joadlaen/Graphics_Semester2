@@ -260,7 +260,7 @@ int main()
     }
 
     // create a GLFW window
-    window = glfwCreateWindow(width, height, "Hello OpenGL 9", NULL, NULL);
+    window = glfwCreateWindow(width, height, "Azure Renderer", NULL, NULL);
     glfwMakeContextCurrent(window);
 
     // register the key event callback function

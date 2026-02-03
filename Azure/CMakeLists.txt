@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.26.0)
-project(proj01 VERSION 1.0.0)
+project(Azure VERSION 1.0.0)
 cmake_policy(SET CMP0072 NEW)
 
 # place for finding Findglfw3.cmake
