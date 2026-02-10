@@ -1,0 +1,3 @@
+C:/temp/Graphics_Semester2/Ray_Tracing/out/build/x64-Debug/CMakeFiles/ray01.dir
+C:/temp/Graphics_Semester2/Ray_Tracing/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/temp/Graphics_Semester2/Ray_Tracing/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
