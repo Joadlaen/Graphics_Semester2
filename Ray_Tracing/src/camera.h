@@ -40,7 +40,8 @@ private:
         pixel00_loc = viewport_upper_left + 0.5 * (pixel_delta_u + pixel_delta_v);
     }
 
-    color ray_color(const ray& r, const hittable& world) {
+    color ray_color(const ray& r, const hittable& world) 
+    {
         /*
         auto t = hit_sphere(point3(0,0,-1), 0.5, r);
         if (t > 0.0) {
@@ -64,24 +65,55 @@ private:
 public:
     double aspect_ratio = 1.0;  // Ratio of image width over height
     int    image_width = 100;  // Rendered image width in pixel count
+    int    samples_per_pixel = 10;
 
-    void render(const hittable& world) {
+    //void render(const hittable& world) {
+    //    initialize();
+    //
+    //    std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
+    //
+    //    for (int j = 0; j < image_height; j++) {
+    //        std::clog << "\rScanlines remaining: " << (image_height - j) << ' ' << std::flush;
+    //        for (int i = 0; i < image_width; i++) {
+    //            auto pixel_center = pixel00_loc + (i * pixel_delta_u) + (j * pixel_delta_v);
+    //            auto ray_direction = pixel_center - center;
+    //            ray r(center, ray_direction);
+    //
+    //            color pixel_color = ray_color(r, world);
+    //            write_color(std::cout, pixel_color);
+    //        }
+    //    }
+    //
+    //    std::clog << "\rDone.                 \n";
+    //}
+
+    void render(const hittable& world) 
+    {
         initialize();
 
         std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
 
-        for (int j = 0; j < image_height; j++) {
+        for (int j = 0; j < image_height; j++) 
+        {
             std::clog << "\rScanlines remaining: " << (image_height - j) << ' ' << std::flush;
-            for (int i = 0; i < image_width; i++) {
-                auto pixel_center = pixel00_loc + (i * pixel_delta_u) + (j * pixel_delta_v);
-                auto ray_direction = pixel_center - center;
-                ray r(center, ray_direction);
+            for (int i = 0; i < image_width; i++) 
+            {
+                //auto pixel_center = pixel00_loc + (i * pixel_delta_u) + (j * pixel_delta_v);
+                //auto ray_direction = pixel_center - center;
+                //ray r(center, ray_direction);
 
-                color pixel_color = ray_color(r, world);
-                write_color(std::cout, pixel_color);
+                //color pixel_color = ray_color(r, world);
+                //write_color(std::cout, pixel_color);
+
+                color pixel_color(0, 0, 0);
+                for (int sample = 0; sample < samples_per_pixel; sample++) 
+                {
+                    ray r = get_ray(i, j);
+                    pixel_color += ray_color(r, world);
+                }
+                write_color(std::cout, pixel_samples_scale * pixel_color);
             }
         }
-
         std::clog << "\rDone.                 \n";
     }
 
