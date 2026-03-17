@@ -368,6 +368,8 @@ int main() {
     camera cam;
     cam.aspect_ratio = 16.0 / 9.0;
     cam.image_width = 400;
+    cam.samples_per_pixel = 100;
+    cam.max_depth = 50;
 
     // Calculate the image height, and ensure that it's at least 1.
     //int image_height = int(image_width / aspect_ratio);
