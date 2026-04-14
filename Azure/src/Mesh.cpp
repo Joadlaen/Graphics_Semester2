@@ -34,11 +34,20 @@ void Mesh::loadModel(std::string path)
     Assimp::Importer importer;
     const aiScene* scene = importer.ReadFile(path, aiProcess_JoinIdenticalVertices | aiProcess_FlipUVs |aiProcess_Triangulate
  | aiProcess_CalcTangentSpace /* | aiProcess_GenNormals */ );
-    if (NULL != scene) {
-        std::cout << "load model successful" << std::endl;
-    } else {
-        std::cout << "load model failed" << std::endl;
+    //if (NULL != scene) {
+    //    std::cout << "load model successful" << std::endl;
+    //} else {
+    //    std::cout << "load model failed" << std::endl;
+    //}
+
+
+    if (!scene || !scene->mRootNode)
+    {
+        std::cerr << "Assimp failed to load model: "
+            << importer.GetErrorString() << std::endl;
+        return;
     }
+
 
     // mNumMeshes should > 0
     // std::cout << scene->mNumMeshes << std::endl;
